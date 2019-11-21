@@ -1,0 +1,4 @@
+.github
+.jscsrc
+/test
+npm-debug.log

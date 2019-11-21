@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "pretty": true,
+    "target": "es2015",
+    "lib": [
+      "es2015",
+      "es2015.promise"
+    ],
+    "module": "commonjs",
+    "noImplicitThis": false,
+    "allowJs": true,
+    "sourceMap": true,
+    "strict": true,
+    "declaration": true,
+    "importHelpers": true,
+    "noImplicitAny": false
+  },
+  "include": [
+    "lib"
+  ]
+}

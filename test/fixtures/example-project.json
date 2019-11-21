@@ -1,0 +1,69 @@
+{
+  "plugin": {
+    "name": "snyk-bazel-plugin",
+    "runtime": "release 1.1.0"
+  },
+  "package": [
+    {
+      "group": "aopalliance",
+      "artifact": "aopalliance",
+      "version": "1.0"
+    },
+    {
+      "group": "com.google.code.findbugs",
+      "artifact": "jsr305",
+      "version": "3.0.2"
+    },
+    {
+      "group": "com.google.errorprone",
+      "artifact": "error_prone_annotations",
+      "version": "2.3.2"
+    },
+    {
+      "group": "com.google.guava",
+      "artifact": "failureaccess",
+      "version": "1.0.1"
+    },
+    {
+      "group": "com.google.guava",
+      "artifact": "guava",
+      "version": "28.0-jre"
+    },
+    {
+      "group": "com.google.guava",
+      "artifact": "listenablefuture",
+      "version": "9999.0-empty-to-avoid-conflict-with-guava"
+    },
+    {
+      "group": "com.google.inject",
+      "artifact": "guice",
+      "version": "4.0"
+    },
+    {
+      "group": "com.google.j2objc",
+      "artifact": "j2objc-annotations",
+      "version": "1.3"
+    },
+    {
+      "group": "javax.inject",
+      "artifact": "javax.inject",
+      "version": "1"
+    },
+    {
+      "group": "org.checkerframework",
+      "artifact": "checker-qual",
+      "version": "2.8.1"
+    },
+    {
+      "group": "org.codehaus.mojo",
+      "artifact": "animal-sniffer-annotations",
+      "version": "1.17"
+    },
+    {
+      "group": "org.sonatype.sisu.inject",
+      "artifact": "cglib",
+      "version": "2.2.1-v20090111"
+    }
+  ],
+  "failedPackage": []
+}

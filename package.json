@@ -1,0 +1,63 @@
+{
+  "name": "@snyk/snyk-bazel-plugin",
+  "description": "Basic Snyk CLI plugin for Bazel support",
+  "main": "dist/index.js",
+  "license": "Apache-2.0",
+  "author": "Snyk <https://snyk.io>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snyk/snyk-bazel-plugin.git"
+  },
+  "homepage": "https://github.com/snyk/snyk-bazel-plugin#readme",
+  "bugs": {
+    "url": "https://github.com/snyk/snyk-bazel-plugin/issues"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "keywords": [
+    "snyk",
+    "bazel",
+    "awesome",
+    "java"
+  ],
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "lint": "prettier --check \"{lib,test}/**/*.ts\" && eslint --cache \"lib/**/*.ts\"",
+    "format": "prettier --write \"{lib,test}/**/*.ts\" && eslint --fix \"lib/**/*.ts\"",
+    "test": "npm run lint && npm run test:unit",
+    "test:unit": "jest",
+    "test:coverage": "npm run test:unit -- --coverage",
+    "test:watch": "tsc-watch --onSuccess 'npm run test:unit'",
+    "build-watch": "tsc -w",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "debug": "^4.1.1",
+    "find-in-files": "^0.5.0",
+    "node-fetch": "^2.6.0",
+    "tmp": "^0.1.0",
+    "tree-kill": "^1.2.1",
+    "tslib": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.5",
+    "@types/jest": "^24.0.23",
+    "@types/node": "^12.12.9",
+    "@types/node-fetch": "^2.5.4",
+    "@types/tmp": "^0.1.0",
+    "@typescript-eslint/eslint-plugin": "^2.8.0",
+    "@typescript-eslint/parser": "^2.8.0",
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.5.0",
+    "jest": "^24.9.0",
+    "prettier": "^1.18.2",
+    "ts-jest": "^24.1.0",
+    "ts-node": "^8.5.2",
+    "tsc-watch": "^4.0.0",
+    "typescript": "^3.7.2"
+  }
+}
