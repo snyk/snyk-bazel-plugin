@@ -18,7 +18,6 @@ export async function bazelInfo(cwd: string): Promise<BazelInfo> {
 }
 
 export async function bazelQueryForDeps(cwd: string): Promise<string> {
-  const query =
-    'bazel query \'deps(//...) except kind("source file", deps(//...))\' --noimplicit_deps --output package';
+  const query = `bazel query "deps(//...) except kind('source file', deps(//...))" --noimplicit_deps --output=package`;
   return await execute(query, [], { cwd });
 }
