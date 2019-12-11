@@ -8,7 +8,7 @@ import { OutOfSync } from '../errors';
 export async function getJarForPackage(
   bazelOutput: string,
   packageName: string,
-): Promise<Buffer> {
+): Promise<Buffer | undefined> {
   const pathToPackageDir: string = path.resolve(
     bazelOutput,
     'external',
@@ -24,6 +24,13 @@ export async function getJarForPackage(
     const jarFullPath: string = path.resolve(pathToPackageDir, jar);
     return fs.readFileSync(jarFullPath);
   } catch (e) {
+    // HACK: for missing jar file or folder in `external` directory
+    if (e.message.match(/no such file or directory/g)) {
+      debug('file-folder-missing', e.message);
+
+      return undefined;
+    }
+
     debug(
       'jar-missing',
       `Missing JAR for ${packageName} in ${pathToPackageDir}`,

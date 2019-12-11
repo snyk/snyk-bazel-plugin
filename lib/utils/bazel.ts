@@ -18,6 +18,8 @@ export async function bazelInfo(cwd: string): Promise<BazelInfo> {
 }
 
 export async function bazelQueryForDeps(cwd: string): Promise<string> {
+  // TODO Should we use `--keep_going` and tweak `sub-process` return statement if it code !==0
+  // TODO probably not, cos we require project to be buildable
   const query = `bazel query "deps(//...) except kind('source file', deps(//...))" --noimplicit_deps --output=package`;
   return await execute(query, [], { cwd });
 }
