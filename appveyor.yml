@@ -29,7 +29,7 @@ install:
   - node --version
   - npm --version
   - npm install
-  - choco install bazel
+  - choco install bazel --version 1.0.0
 
 test_script:
   - npm run test

@@ -20,9 +20,9 @@ function isBazleProject(root: string, targetFile: string): boolean {
 }
 
 async function isLanguageSupported() {
-  // Find all BUILD files that have `java` related rules in them
+  // Find all BUILD files that have `java` or `scala` related rules in them
   const javaBuildFiled = await findInFile.find(
-    'java_library|java_import',
+    'java_library|java_import|scala_library',
     process.cwd(),
     'BUILD(.bzl)?$',
   );
@@ -37,7 +37,7 @@ async function buildDependenciesList(
 
   const packagesList: string[] = bazelDepsList
     .split('\n')
-    .filter((line) => line.match(/^@/g))
+    .filter((line) => line.match(/^@.+\/jar$/g))
     .map((packageName: string) => {
       return packageName
         .replace('@', '')
@@ -54,7 +54,8 @@ async function buildDependenciesList(
       );
       return {
         packageName: singlePackage,
-        sha1: calculateShaForJar(jarContent),
+        // HACK: for missing jar file or folder in `external` directory
+        sha1: jarContent && calculateShaForJar(jarContent),
       };
     }),
   );
@@ -68,6 +69,11 @@ async function buildDependenciesList(
 
   const tmp: any[] = await Promise.all(
     packageSHAList.map(async ({ packageName, sha1 }) => {
+      // HACK: for missing jar file or folder in `external` directory
+      if (!sha1) {
+        return { packageName, sha1 };
+      }
+
       try {
         return await findPackageInMavenCentralBySha(packageName, sha1);
       } catch (e) {

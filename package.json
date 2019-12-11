@@ -40,7 +40,7 @@
     "find-in-files": "^0.5.0",
     "node-fetch": "^2.6.0",
     "tmp": "^0.1.0",
-    "tree-kill": "^1.2.1",
+    "tree-kill": "^1.2.2",
     "tslib": "^1.10.0"
   },
   "devDependencies": {
