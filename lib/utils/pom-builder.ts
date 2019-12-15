@@ -23,6 +23,13 @@ function buildPom(
   <version>1.0-SNAPSHOT</version>
   <name>Test project</name>
   <description>Test project for the Bazel CLI plugin</description>
+  
+  <repositories>
+    <repository>
+      <id>atlassian</id>
+      <url>https://packages.atlassian.com/maven/public</url>
+    </repository>
+  </repositories>
 
   <dependencies>`;
 
